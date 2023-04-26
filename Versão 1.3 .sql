@@ -63,9 +63,3 @@ create table tb_promocoes(
     foreign key(idProduto) references tb_produtos(id),
     foreign key(idTipo) references tb_tipo_promocao(id)
 );
-
-insert into tb_perfil values(1, "usuario");
-insert into tb_usuarios(nome, email, senha, cpf, userType, saldo) values("Jose", "ssss", "ggg", 12345678910,1, 1.00);
-
-select *
-from tb_usuarios;
