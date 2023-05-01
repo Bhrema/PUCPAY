@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="register-form">
+        <input type="email" placeholder="email">
+        <input type="text" placeholder="name">
+        <input type="password" placeholder="password">
+        <button type="submit">register</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('register-form')
+      
+      
+        form.addEventListener('submit', event => {
+          event.preventDefault()
+      
+          const formData = new FormData(form)
+          const data = Object.entries(formData)
+          console.log(formData)
+          console.log(data)
+      
+          fetch('http://localhost:3000/auth/signup', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          }).then(res => res.json()).then(data => console.log(data))
+        })
+      
+      
+      </script>
+</body>
+</html>

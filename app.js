@@ -1,14 +1,37 @@
-const http = require('http');
+const express = require("express");
+const app = express();  
+const expbhs = require("express-handlebars")
 
-const hostname = '127.0.0.1';
-const port = 3000;
+app.engine('handlebars', expbhs.engine())
+app.set('view engine', 'handlebars')
+ 
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World');
-});
+app.get('/login', (req, res) => {
+    res.render('login')
+})
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-});
+app.get('/adm-dashboard', (req, res) => {
+    res.render('dashboard-adm')
+})
+
+app.get('/aluno-dashboard', (req, res) => {
+    res.render('dashboard-adm')
+})
+
+app.get('/restaurante-dashboard', (req, res) => {
+    res.render('dashboard-restaurante')
+})
+
+app.get('/registro', (req, res) => {
+    res.render('registre')
+})
+
+
+
+app.get('/', (req, res) => {
+    res.render('home')
+})
+
+app.listen(4000, () => {
+    console.log('Servidor funcionando')
+})   
