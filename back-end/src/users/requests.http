@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-  "email": "ocostadallo@gmail.com",
-  "name": "otavio dallo",
+  "email": "jonhvictor@gmail.com",
+  "name": "joao vitor",
   "password": "12345"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:3000/auth/signin
 content-type: application/json
 
 {
-  "email": "test@test.com",
+  "email": "ddocostadallo@gmail.com",
   "password": "12345"
 }
 

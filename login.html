@@ -22,10 +22,9 @@
     </div>
     <div class="card-body">
       <p class="login-box-msg">Registre-se aqui</p>
-
-      <form action="../../index.html" method="post">
+      <form method="post" id="login-form">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" placeholder="Email" name="email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -33,7 +32,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Password" name="password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -55,6 +54,38 @@
   </div><!-- /.card -->
 </div>
 <!-- /.register-box -->
+
+<script>
+
+const form = document.getElementById('login-form')
+  console.log(form)
+
+  form.addEventListener('submit', event => {
+    event.preventDefault()
+
+    const formData = new FormData(form);
+    const data = {};
+
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+    
+
+    console.log(data)
+
+    fetch('http://localhost:3000/auth/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json()).then(data => console.log(data))
+  })
+
+
+</script>
+
+
 
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
