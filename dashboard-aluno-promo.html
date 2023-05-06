@@ -143,36 +143,38 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+        <!-- Add icons to the links using the .nav-icon class
+           with font-awesome or any other icon font library -->
+           <li class="nav-item menu-open">
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="./dashboard-aluno.html" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                      <p>
+                        Carteira
+                      </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="./dashboard-aluno-restaurante.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                      <p>Restaurantes</p>
+                  </a>
+                </li>
+            </ul>
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Carteira
+                <p>Promoções</p>
                 <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./dashboard-aluno-restaurante.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Restaurantes</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./dashboard-aluno-promo.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Promoções</p>
-                </a>
-              </li>
+            </a>  
+            <ul class="nav nav-treeview">        
               <li class="nav-item">
                 <a href="./index2.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v2</p>
                 </a>
               </li>
-              
+            
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
