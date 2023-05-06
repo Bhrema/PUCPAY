@@ -36,7 +36,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-          <button type="button" class="btn btn-outline-danger float-right">Logout</button>
+          <button type="button" id="btnLogout" class="btn btn-outline-danger float-right">Logout</button>
       <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
@@ -201,6 +201,37 @@
   </footer>
 </div>
 <!-- ./wrapper -->
+
+
+<script>
+const btn = document.getElementById('btnLogout')
+btn.addEventListener('click', event => {
+  event.preventDefault()
+  logout()
+})
+
+const logout = async (data) => {
+  const response = await fetch('http://localhost:3000/auth/signin', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+  const responseData = await response.json();
+
+  console.log(responseData);
+
+  window.location.replace('login.html')
+
+
+}
+
+</script>
+
+
+
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->

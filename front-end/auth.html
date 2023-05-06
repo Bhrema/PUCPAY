@@ -42,6 +42,14 @@
           </div>
         </div>
         <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Cpf/Cnpj" name="cpf_cnpj">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
           <input type="password" class="form-control" placeholder="Password" name="password">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -56,7 +64,7 @@
           <!-- /.col -->
         </div>
       </form>
-      <a href="login.html" class="text-center">Eu já tenho um login</a>
+        <a href="login.html" class="text-center">Eu já possuo um login</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
@@ -66,32 +74,45 @@
 <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
 
 <script>
-  const form = document.getElementById('register-form')
-  console.log(form)
+const form = document.getElementById('register-form')
+
+const register = async (data) => {
+  const response = await fetch('http://localhost:3000/auth/signup', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+    const responseData = await response.json();
+
+    console.log(responseData);
+
+    return responseData;
+}
 
   form.addEventListener('submit', event => {
     event.preventDefault()
-
-    const formData = new FormData(form);
-    const data = {};
-
-    formData.forEach((value, key) => {
-      data[key] = value;
+    handleRegister()
     });
-    
 
-    console.log(data)
+    async function handleRegister() {
+      const formData = new FormData(form);
+      const data = {};
 
-    fetch('http://localhost:3000/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    }).then(res => res.json()).then(data => console.log(data))
-  })
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
 
+      const response = await register(data)
 
+      if(response.email) {
+        window.location.replace('login.html')
+      } else {
+        console.log('login inválido')
+      }
+      }
 </script>
  
 <!-- jQuery -->

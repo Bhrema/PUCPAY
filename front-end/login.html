@@ -48,7 +48,7 @@
         </div>
       </form>
 
-      <a class="float-right" href="registre.html" class="text-center">Não possuo um login</a>
+      <a href="/front-end/auth.html" class="float-right" href="registre.html" class="text-center">Não possuo um login</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
@@ -58,30 +58,49 @@
 <script>
 
 const form = document.getElementById('login-form')
-  console.log(form)
+
+
+const login = async (data) => {
+  const response = await fetch('http://localhost:3000/auth/signin', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+    const responseData = await response.json();
+
+    console.log(responseData);
+
+    return responseData;
+}
 
   form.addEventListener('submit', event => {
     event.preventDefault()
-
-    const formData = new FormData(form);
-    const data = {};
-
-    formData.forEach((value, key) => {
-      data[key] = value;
+    handleLogin()
     });
-    
 
-    console.log(data)
+    async function handleLogin() {
+      const formData = new FormData(form);
+      const data = {};
 
-    fetch('http://localhost:3000/auth/signin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    }).then(res => res.json()).then(data => console.log(data))
-  })
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
 
+      const response = await login(data)
+
+      if(response.email) {
+        setTimeout(function(){
+            window.location.replace('dashboard-aluno.html');
+           }, 2000);
+      } else {
+        console.log('login inválido')
+      }
+      }
+
+      
 
 </script>
 
