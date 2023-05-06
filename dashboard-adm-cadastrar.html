@@ -124,7 +124,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
       <span class="brand-text font-weight-light">PUCPAY</span>
     </a>
 
@@ -136,42 +136,44 @@
           <i class="fas-fa-user"></i>
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">UserName</a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-             <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Overview
+         <!-- Add icons to the links using the .nav-icon class
+            with font-awesome or any other icon font library -->
+            <li class="nav-item menu-open">
+             <ul class="nav nav-treeview">
+                <li class="nav-item">
+                       <a href="./dashboard-adm.html" class="nav-link">
+                         <i class="far fa-circle nav-icon"></i>
+                         <p>
+                           Overview   
+                         </p>
+                       </a>
+                  </li>
+             </ul>
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>Cadastrar</p>
                   <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="./dashboard-adm-cadastrar.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Cadastrar</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="./dashboard-adm-view-users.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Usuarios</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Relatórios</p>
-                  </a>
-                </li>
+                </a>          
+             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./dashboard-adm-view-users.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Usuarios</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Relatórios</p>
+                </a>
+              </li>
               
         </ul>
       </nav>
@@ -181,6 +183,70 @@
   </aside>
 
   <!-- CONTEÚDO DO DASHBOARD -->
+  <section class="content">
+    <!-- <div class="container-fluid">
+      
+      <div class="row">
+        <div class="col-lg-3 col-6">
+          
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>New Orders</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div> -->
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3" style=" position:relative; top:90px;">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Cadastrar Conta</h2>
+              <form>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formAdmNome">Nome</label>
+                  <input type="text" id="formAdmNome" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formAdmEmail">Email</label>
+                  <input type="email" id="formAdmEmail" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formAdmCpf/Cnpj">Cpf/Cnpj</label>
+                  <input type="text" id="formAdmCpf/Cnpj" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formAdmSenha">Senha</label>
+                  <input type="password" id="formAdmSenha" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formAdmSenhaRep">Repita sua senha</label>
+                  <input type="password" id="formAdmSenhaRep" class="form-control form-control-lg" />
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button type="button"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Registrar</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </section>
   
   <!-- /.content-wrapper -->
 
