@@ -211,7 +211,7 @@ btn.addEventListener('click', event => {
 })
 
 const logout = async (data) => {
-  const response = await fetch('http://localhost:3000/auth/signin', {
+  const response = await fetch('http://localhost:3000/auth/signout', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

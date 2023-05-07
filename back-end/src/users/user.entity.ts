@@ -19,6 +19,9 @@ export class User {
   name: string;
 
   @Column()
+  cpf_cnpj: string;
+
+  @Column()
   password: string;
 
   @AfterInsert()

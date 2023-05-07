@@ -7,8 +7,8 @@ import { User } from './user.entity';
 export class UsersService {
   constructor(@InjectRepository(User) private repo: Repository<User>) {}
 
-  create(email: string, name:string, password: string) {
-    const user = this.repo.create({ email, name, password });
+  create(email: string, name:string, cpf_cnpj: string, password: string) {
+    const user = this.repo.create({ email, name, cpf_cnpj, password });
 
     return this.repo.save(user);
   }
@@ -22,6 +22,10 @@ export class UsersService {
 
   find(email: string) {
     return this.repo.find({ email });
+  }
+
+  async findAll(): Promise<User[]> {
+    return await this.repo.createQueryBuilder('user').getMany();
   }
 
   async update(id: number, attrs: Partial<User>) {

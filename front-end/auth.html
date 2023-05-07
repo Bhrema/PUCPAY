@@ -77,14 +77,14 @@
 const form = document.getElementById('register-form')
 
 const register = async (data) => {
-  const response = await fetch('http://localhost:3000/auth/signup', {
+const response = await fetch('http://localhost:3000/auth/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
   });
-
+  
     const responseData = await response.json();
 
     console.log(responseData);

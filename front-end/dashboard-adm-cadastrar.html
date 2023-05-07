@@ -208,33 +208,29 @@
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Cadastrar Conta</h2>
-              <form>
+              <form id="register-form">
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="formAdmNome">Nome</label>
-                  <input type="text" id="formAdmNome" class="form-control form-control-lg" />
+                  <label class="form-label" for="formAdmEmail">Email</label>
+                  <input type="email" id="formAdmEmail" class="form-control form-control-lg" name="email"/>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <label class="form-label" for="formAdmEmail">Email</label>
-                  <input type="email" id="formAdmEmail" class="form-control form-control-lg" />
+                  <label class="form-label" for="formAdmNome">Nome</label>
+                  <input type="text" id="formAdmNome" class="form-control form-control-lg" name="name"/>
                 </div>
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="formAdmCpf/Cnpj">Cpf/Cnpj</label>
-                  <input type="text" id="formAdmCpf/Cnpj" class="form-control form-control-lg" />
+                  <input type="text" id="formAdmCpf/Cnpj" class="form-control form-control-lg" name="cpf_cnpj"/>
                 </div>
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="formAdmSenha">Senha</label>
-                  <input type="password" id="formAdmSenha" class="form-control form-control-lg" />
+                  <input type="password" id="formAdmSenha" class="form-control form-control-lg" name="password"/>
                 </div>
 
-                <div class="form-outline mb-4">
-                  <label class="form-label" for="formAdmSenhaRep">Repita sua senha</label>
-                  <input type="password" id="formAdmSenhaRep" class="form-control form-control-lg" />
-                </div>
                 <div class="d-flex justify-content-center">
-                  <button type="button"
+                  <button type="submit"
                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Registrar</button>
                 </div>
               </form>
@@ -267,6 +263,52 @@
   </footer>
 </div>
 <!-- ./wrapper -->
+
+<script>
+  const form = document.getElementById('register-form')
+    console.log(form)
+
+    const register = async (data) => {
+    const response = await fetch('http://localhost:3000/auth/signup', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+    const responseData = await response.json();
+
+    console.log(responseData);
+
+    return responseData;
+}
+
+  form.addEventListener('submit', event => {
+    event.preventDefault()
+    handleRegister()
+    });
+
+    async function handleRegister() {
+      const formData = new FormData(form);
+      const data = {};
+
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      const response = await register(data)
+
+      if(response.email){
+        window.location.replace('dashboard-adm-view-users.html')
+      }else {
+        console.log('Erro, ou registro inválido')
+      } 
+
+      }
+</script>
+
+
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->

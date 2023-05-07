@@ -5,6 +5,7 @@ content-type: application/json
 {
   "email": "jonhvictor@gmail.com",
   "name": "joao vitor",
+  "cpf_cnpj": "10843769971",
   "password": "12345"
 }
 
@@ -13,7 +14,7 @@ POST http://localhost:3000/auth/signin
 content-type: application/json
 
 {
-  "email": "ddocostadallo@gmail.com",
+  "email": "jonhvictor@gmail.com",
   "password": "12345"
 }
 
@@ -23,8 +24,8 @@ GET http://localhost:3000/auth/whoami
 ### Sign out
 POST http://localhost:3000/auth/signout
 
-### Find a particular user with a given ID
-GET http://localhost:3000/auth/4
+### Find all users
+GET http://localhost:3000/auth/adm/users
 
 ### Find all users with a given email
 GET http://localhost:3000/auth?email=asdf@asdf.com

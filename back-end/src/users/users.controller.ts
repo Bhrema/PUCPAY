@@ -43,7 +43,7 @@ export class UsersController {
 
   @Post('/signup')
   async createUser(@Body() body: CreateUserDto, @Session() session: any) {
-    const user = await this.authService.signup(body.email, body.name, body.password);
+    const user = await this.authService.signup(body.email, body.name, body.cpf_cnpj, body.password);
     session.userId = user.id;
     return user;
   }
@@ -63,6 +63,12 @@ export class UsersController {
     }
     return user;
   }
+
+  @Get('/adm/users')
+  async getAllUsers(): Promise<User[]> {
+    return await this.usersService.findAll()
+  }
+
 
   @Get()
   findAllUsers(@Query('email') email: string) {
