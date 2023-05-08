@@ -24,6 +24,12 @@ export class User {
   @Column()
   password: string;
 
+  @Column({ default: false })
+  isAdmin: boolean;
+
+  @Column({ default: false })
+  isRestaurant: boolean;
+
   @AfterInsert()
   logInsert() {
     console.log('Inserted User with id', this.id);

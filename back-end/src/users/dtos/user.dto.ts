@@ -9,4 +9,13 @@ export class UserDto {
 
   @Expose()
   email: string;
+
+  @Expose()
+  cpf_cnpj: string;
+
+  @Expose()
+  isAdmin: boolean;
+
+  @Expose()
+  isRestaurant: boolean;
 }
