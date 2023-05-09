@@ -85,21 +85,59 @@
 <script>
 const form = document.getElementById('register-form')
 
-const form_email = document.getElementById('formEmail')
-const form_nome = document.getElementById('formNome')
-const form_cpf = document.getElementById('formCpf')
-const form_password = document.getElementById('formPassword')
 
-form_email.addEventListener('input', () => {
+const emailInput = document.getElementById('formEmail');
+const emailFeedback = document.querySelector('.invalid-feedback');
+emailInput.addEventListener('input', () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailValue = emailInput.value;
+  
+  if (emailRegex.test(emailValue)) {
+    emailInput.classList.remove('is-invalid');
+    emailInput.classList.add('is-valid');
+    emailFeedback.style.display = 'none';
+  } else {
+    emailInput.classList.remove('is-valid');
+    emailInput.classList.add('is-invalid');
+    emailFeedback.style.display = 'block';
+  }
+});
 
-  if(form_email.validity.valid) {
-    form_email.classList.remove('is-invalid')
+const nameInput = document.getElementById('formNome');
+const nameFeedback = document.querySelector('.invalid-feedback');
+nameInput.addEventListener('input', () => {
+  const nameRegex = /^[a-zA-Z\s]{10,}$/;
+  const nameValue = nameInput.value;
+  
+  if (nameRegex.test(nameValue)) {
+    nameInput.classList.remove('is-invalid');
+    nameInput.classList.add('is-valid');
+    nameFeedback.style.display = 'none';
+  } else {
+    nameInput.classList.remove('is-valid');
+    nameInput.classList.add('is-invalid');
+    nameFeedback.style.display = 'block';
   }
-  else if (!emailRegex.test(form_email.value)) {
-    form_email.classList.add('is-invalid')
+}); 
+
+const passwordInput = document.getElementById('formPassword');
+const passwordFeedback = document.querySelector('.invalid-feedback');
+passwordInput.addEventListener('input', () => {
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{"':;?\/>.<,])(?=.*[^\s]).{8,}$/;
+  const passwordValue = passwordInput.value;
+  
+  if (passwordRegex.test(passwordValue)) {
+    passwordInput.classList.remove('is-invalid');
+    passwordInput.classList.add('is-valid');
+    passwordFeedback.style.display = 'none';
+  } else {
+    passwordInput.classList.remove('is-valid');
+    passwordInput.classList.add('is-invalid');
+    passwordFeedback.style.display = 'block';
   }
-}, false)
+});
+
+
 
 
 const register = async (data) => {
