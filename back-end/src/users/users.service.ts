@@ -17,11 +17,11 @@ export class UsersService {
     if (!id) {
       return null;
     }
-    return this.repo.findOne(id);
+    return this.repo.findOne({where : {id: id}});
   }
 
   find(email: string) {
-    return this.repo.find({ email });
+    return this.repo.find({where : {email: email}});
   }
 
   async findAll(): Promise<User[]> {
