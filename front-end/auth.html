@@ -8,7 +8,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="node_modules/bootstrap/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="node_modules/bootstrap/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
@@ -31,7 +31,7 @@
           <input id="formEmail" type="email" class="form-control" placeholder="Email" name="email"> <!--Input de EMAIL-->
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-user"></span>
+              <span class="fas fa-envelope"></span>
             </div>
           </div>
           <span class="invalid-feedback">Por favor, insira um e-mail correto</span>
@@ -42,26 +42,70 @@
           <input id="formNome" type="text" class="form-control" placeholder="Nome Completo" name="name"> <!--Input de Nome-->
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
           <span class="invalid-feedback">Nome sem símbolos e pelo menos 10 caracteres</span>
           <!--Span que aparece caso o Regex não retorne True-->
         </div>
 
-        <div class="input-group mb-3">
-          <input id="formCpf" type="text" class="form-control" placeholder="Cpf/Cnpj" name="cpf_cnpj"> <!--Input de Cpf/Cnpj (por enquanto)-->
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cpf" checked onclick="set_cpf()">
+          <label class="form-check-label" for="inlineRadio1">CPF</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cpnj" onclick="set_cnpj()">
+          <label class="form-check-label" for="inlineRadio2">CPNJ</label>
+        </div>
+
+        <div class="input-group mb-3" id="cpf_div">
+          <input id="formCpf" type="text" class="form-control" placeholder="CPF" name="cpf"> <!--Input de Cpf/Cnpj (por enquanto)-->
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+              <span class="fas fa-id-card"></span>
             </div>
           </div>
           <span class="invalid-feedback">CPF inválido</span>
           <!--Span que aparece caso o Regex não retorne True-->
         </div>
 
+        <div class="input-group mb-3" style="display: none;" id="cnpj_div">
+          <input id="formCpf" type="text" class="form-control" placeholder="CNPJ" name="cnpj"> <!--Input de Cpf/Cnpj (por enquanto)-->
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-id-card"></span>
+            </div>
+          </div>
+          <span class="invalid-feedback">CNPJ inválido</span>
+          <!--Span que aparece caso o Regex não retorne True-->
+        </div>
+
+        <div id="endereco" style="display: none;">
+          <select class="form-select mb-3">
+            <option selected>Endereço</option>
+            <option value="1">Bloco 1 Amarelo</option>
+            <option value="2">Bloco 2 Azul</option>
+            <option value="3">Bloco 3 Verde</option>
+            <option value="4">Bloco 4 Laranja</option>
+            <option value="5">Bloco 5 Vermelho</option>
+            <option value="6">Bloco 6 Medicina</option>
+            <option value="7">Bloco 7 Politécnica</option>
+            <option value="8">DCE</option>
+          </select>
+        </div>
+
         <div class="input-group mb-3">
           <input id="formPassword" type="password" class="form-control" placeholder="Password" name="password"> <!--Input de senha-->
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+          <span class="invalid-feedback"> Senha com pelo menos 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.</span>
+          <!--Span que aparece caso o Regex não retorne True-->
+        </div>
+        <div class="input-group mb-3">
+          <input id="formPassword" type="password" class="form-control" placeholder="Confirme Senha" name="password"> <!--Input de senha-->
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -77,7 +121,7 @@
           <!-- /.col -->
         </div>
       </form>
-        <a href="login.html" class="text-center">Eu já possuo um login</a>
+        <a href="login.html" class="text-center" style="bottom: 50px; left: 135px; position: relative;">Eu já possuo um login</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
@@ -87,6 +131,16 @@
 <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
 
 <script>
+const set_cnpj = () => {
+  document.getElementById("cnpj_div").style.display = "flex";
+  document.getElementById("cpf_div").style.display = "none";
+  document.getElementById("endereco").style.display = "block";
+}
+const set_cpf = () => {
+  document.getElementById("cpf_div").style.display = "flex";
+  document.getElementById("cnpj_div").style.display = "none";
+  document.getElementById("endereco").style.display = "none";
+}
 const form = document.getElementById('register-form') // Captura o formulário
 
 // Regex de email para o cadastro de usuário

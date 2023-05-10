@@ -204,52 +204,80 @@
             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div> -->
-      <div class="mask d-flex align-items-center h-100 gradient-custom-3" style=" position:relative; top:90px;">
-        <div class="container h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-              <div class="card" style="border-radius: 15px;">
-                <div class="card-body p-5">
-                  <h2 class="text-uppercase text-center mb-5">Cadastrar Conta</h2>
+        <div class="mask d-flex align-items-center gradient-custom-3" style=" position:relative; top:90px;">
+          <div class="container">
+            <div class="row d-flex justify-content-center align-items-center">
+              <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" id="card-registro" style="border-radius: 15px;left: 140px;height: 550px;">
+                  <div class="card-body p-5"><!--  Input Control -->
+                    <h2 class="text-uppercase text-center mb-5 position-relative" id="label-cad">Cadastrar Conta</h2>
+  
+                    <form id="register-form" style="position: relative; bottom: 40px;">
+  
+                      <div class="form-outline mb-1">
+                        <label class="form-label" for="formAdmEmail">Email</label>
+                        <input id="formAdmEmail" type="email" class="form-control form-control-lg" name="email" />
+                        <span class="invalid-feedback">Por favor, insira um e-mail correto</span>
+                      </div>
+  
+                      <div class="form-outline mb-1">
+                        <label class="form-label" for="formAdmNome">Nome</label>
+                        <input id="formAdmNome" type="text" class="form-control form-control-lg" name="name" />
+                        <span class="invalid-feedback">Nome sem símbolos e pelo menos 10 caracteres</span>
+                      </div>
 
-                  <form id="register-form">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cpf" checked onclick="set_cpf()">
+                        <label class="form-check-label" for="inlineRadio1">CPF</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cpnj" onclick="set_cnpj()">
+                        <label class="form-check-label" for="inlineRadio2">CPNJ</label>
+                      </div>
+  
+                      <div class="form-outline mb-1" id="cpf_div">
+                        <label class="form-label" for="formAdmCPF">CPF</label>
+                        <input id="formAdmCPF" type="text"  class="form-control form-control-lg" name="cpf_cnpj" />
+                      </div>
 
-                    <div class="form-outline mb-4">
-                      <label class="form-label" for="formAdmEmail">Email</label>
-                      <input id="formAdmEmail" type="email" class="form-control form-control-lg" name="email" />
-                      <span class="invalid-feedback">Por favor, insira um e-mail correto</span>
-                    </div>
+                      <div class="form-outline mb-1" id="cnpj_div" style="display: none;">
+                        <label class="form-label" for="formAdmCNPJ">CNPJ</label>
+                        <input id="formAdmCNPJ" type="text"  class="form-control form-control-lg" name="cpf_cnpj" />
+                      </div>
 
-                    <div class="form-outline mb-4">
-                      <label class="form-label" for="formAdmNome">Nome</label>
-                      <input id="formAdmNome" type="text" class="form-control form-control-lg" name="name" />
-                      <span class="invalid-feedback">Nome sem símbolos e pelo menos 10 caracteres</span>
-                    </div>
-
-                    <div class="form-outline mb-4">
-                      <label class="form-label" for="formAdmCpf/Cnpj">Cpf/Cnpj</label>
-                      <input id="formAdmCpf/Cnpj" type="text" class="form-control form-control-lg" name="cpf_cnpj" />
-                    </div>
-
-                    <div class="form-outline mb-4">
-                      <label class="form-label" for="formAdmSenha">Senha</label>
-                      <input id="formAdmSenha" type="password" class="form-control form-control-lg" name="password" />
-                    </div>
-
-                    <div class="d-flex justify-content-center">
-                      <button type="submit"
-                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Registrar</button>
-                    </div>
-                  </form>
-
+                      <div id="endereco" style="display: none;">
+                        <label class="form-label" for="formAdmeEndereço">Endereço</label><br>
+                        <select class="form-select mb-3" id="formAdmeEndereço">  
+                          <option value="1">Bloco 1 Amarelo</option>
+                          <option value="2">Bloco 2 Azul</option>
+                          <option value="3">Bloco 3 Verde</option>
+                          <option value="4">Bloco 4 Laranja</option>
+                          <option value="5">Bloco 5 Vermelho</option>
+                          <option value="6">Bloco 6 Medicina</option>
+                          <option value="7">Bloco 7 Politécnica</option>
+                          <option value="8">DCE</option>
+                        </select>
+                      </div>
+  
+                      <div class="form-outline mb-1">
+                        <label class="form-label" for="formAdmSenha">Senha</label>
+                        <input id="formAdmSenha" type="password"  class="form-control form-control-lg" name="password" />
+                      </div>
+  
+                      <div class="d-flex justify-content-center position-relative" style="top: 10px;">
+                        <button type="submit"
+                          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Registrar</button>
+                      </div>
+                    </form>
+  
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    </section>
+      </section>
+      </section>  
 
     <!-- /.content-wrapper -->
 
@@ -272,6 +300,22 @@
   <!-- ./wrapper -->
 
   <script>
+    const set_cnpj = () => {
+      document.getElementById("cnpj_div").style.display = "block";
+      document.getElementById("cpf_div").style.display = "none";
+      document.getElementById("endereco").style.display = "block";
+      document.getElementById("card-registro").style.height = "570px";
+      document.getElementById("label-cad").style.bottom = "30px";
+      document.getElementById("register-form").style.bottom = "80px";
+    } 
+    const set_cpf = () => {
+    document.getElementById("cpf_div").style.display = "block";
+    document.getElementById("cnpj_div").style.display = "none";
+    document.getElementById("endereco").style.display = "none";
+    document.getElementById("card-registro").style.height = "550px";
+    document.getElementById("label-cad").style.bottom = "0px";
+    document.getElementById("register-form").style.bottom = "40px";
+    }
     const form = document.getElementById('register-form')
 
     function regex() {
