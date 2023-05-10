@@ -16,6 +16,12 @@ export class AuthService {
   async signup(email: string, name:string, cpf_cnpj:string, password: string) {
     // See if email is in use
     const users = await this.usersService.find(email);
+    const usersCpf = await this.usersService.createQueryBuilder(cpf_cnpj);
+
+    if(usersCpf.length){
+      throw new BadRequestException('cpf in use');
+    }
+
     if (users.length) {
       throw new BadRequestException('email in use');
     }

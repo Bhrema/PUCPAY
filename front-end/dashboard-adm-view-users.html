@@ -139,7 +139,7 @@
             <i class="fas-fa-user"></i>
           </div>
           <div class="info">
-            <a href="login.html" class="d-block" id="session-name">Faça seu login</a>
+            <a href="#" class="d-block" id="session-name">Faça seu login</a>
           </div>
         </div>
 
@@ -264,6 +264,11 @@
       <!-- ./wrapper -->
 
       <script>
+        function replacePage(){
+        if(!sessionJson.isAdmin){
+          window.location.replace('login.html')
+        }
+      }
 
         async function response() {
           try {
@@ -277,6 +282,7 @@
             const responseData = await response.json();
             const users = responseData;
 
+            
             const table = document.querySelector('table tbody')
             table.innerHTML = ''
 
@@ -298,13 +304,14 @@
               table.innerHTML += linha;
             });
 
-            const buttonsDelete = document.querySelectorAll('[id^="button-delete"]');
-            buttonsDelete.forEach((buttonDelete) => {
-              buttonDelete.addEventListener('click', () => {
-                const id = buttonDelete.id.split('-')[2];
-                deleteUser(id);
-              });
-            });
+            if(sessionJson.isAdmin){
+              const buttonsDelete = document.querySelectorAll('[id^="button-delete"]');
+              buttonsDelete.forEach((buttonDelete) => {
+                buttonDelete.addEventListener('click', () => {
+                  const id = buttonDelete.id.split('-')[2];
+                  deleteUser(id);
+               });
+            });}
 
             async function deleteUser(id) {
               try {
@@ -373,6 +380,7 @@
         }
 
         userNameSession.innerText = sessionJson.name;
+        replacePage()
 
       </script>
 

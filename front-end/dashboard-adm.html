@@ -233,7 +233,6 @@
 
     const session = localStorage.getItem('session')
     const sessionJson = JSON.parse(session)
-    
     const userNameSession = document.getElementById('session-name')
     if(!sessionJson.name){
       userNameSession.innerText = "Faça seu login!"

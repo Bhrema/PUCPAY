@@ -23,6 +23,11 @@ export class UsersService {
   find(email: string) {
     return this.repo.find({ email });
   }
+  
+  createQueryBuilder(cpf_cnpj: string) {
+    return this.repo.find( {cpf_cnpj} )
+  }
+
 
   async findAll(): Promise<User[]> {
     return await this.repo.createQueryBuilder('user').getMany();
