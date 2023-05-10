@@ -34,7 +34,7 @@
               <span class="fas fa-envelope"></span>
             </div>
           </div>
-          <span id="spanErrorEmail" class="invalid-feedback">Por favor, insira um e-mail correto</span>
+          <span id="spanErrorEmail" class="invalid-feedback">Insira um e-mail válido</span>
           <!--Span que aparece caso o Regex não retorne True-->
         </div>
         
@@ -45,7 +45,7 @@
               <span class="fas fa-user"></span>
             </div>
           </div>
-          <span id="spanErrorName" class="invalid-feedback">Nome sem símbolos e pelo menos 10 caracteres</span>
+          <span id="spanErrorName" class="invalid-feedback">Nome completo sem símbolos</span>
           <!--Span que aparece caso o Regex não retorne True-->
         </div>
 
@@ -81,8 +81,8 @@
         </div>
 
         <div id="endereco" style="display: none;">
-          <select class="form-select mb-3">
-            <option selected>Endereço</option>
+          <select id="enderecoInput" class="form-select mb-3">
+            <option selected></option>
             <option value="1">Bloco 1 Amarelo</option>
             <option value="2">Bloco 2 Azul</option>
             <option value="3">Bloco 3 Verde</option>
@@ -92,6 +92,7 @@
             <option value="7">Bloco 7 Politécnica</option>
             <option value="8">DCE</option>
           </select>
+          <span id="spanErrorEndereco" class="invalid-feedback">Selecione um endereço</span>
         </div>
 
         <div class="input-group mb-3">
@@ -111,7 +112,7 @@
               <span class="fas fa-lock"></span>
             </div>
           </div>
-          <span id="spanErrorValidatePassword" class="invalid-feedback">Insira a mesma senha</span>
+          <span id="spanErrorValidatePassword" class="invalid-feedback">Insira a mesma senha </span>
           <!--Span que aparece caso o Regex não retorne True-->
         </div>
           <!-- /.col -->
@@ -216,6 +217,23 @@ cnpjInput.addEventListener('input', () => {
     cnpjInput.classList.remove('is-valid')
     cnpjInput.classList.add('is-invalid')
     cnpjFeedback.style.display = 'block'
+  }
+})
+
+const enderecoInput = document.getElementById('enderecoInput')
+const enderecoFeedback = document.getElementById('spanErrorEndereco')
+// Regex de endereço(bloco) para restaurantes
+enderecoInput.addEventListener('click', () => {
+  const enderecoValue = enderecoInput.value
+  if (enderecoValue === '') {
+    enderecoInput.classList.remove('is-valid')
+    enderecoInput.classList.add('is-invalid')
+    enderecoFeedback.style.display = 'block'
+  }
+  else {
+    enderecoInput.classList.remove('is-invalid')
+    enderecoInput.classList.add('is-valid')
+    enderecoFeedback.style.display = 'none'
   }
 })
 
